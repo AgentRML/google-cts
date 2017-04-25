@@ -120,8 +120,16 @@ public class StagefrightTest extends InstrumentationTestCase {
         doStagefrightTest(R.raw.cve_2015_3829);
     }
 
+    public void testStagefright_cve_2015_3836() throws Exception {
+        doStagefrightTest(R.raw.cve_2015_3836);
+    }
+
     public void testStagefright_cve_2015_3864() throws Exception {
         doStagefrightTest(R.raw.cve_2015_3864);
+    }
+
+    public void testStagefright_cve_2015_3864_b23034759() throws Exception {
+        doStagefrightTest(R.raw.cve_2015_3864_b23034759);
     }
 
     public void testStagefright_cve_2015_6598() throws Exception {
@@ -136,16 +144,13 @@ public class StagefrightTest extends InstrumentationTestCase {
         doStagefrightTest(R.raw.bug_26366256);
     }
 
+    /***********************************************************
+     to prevent merge conflicts, add M tests below this comment,
+     before any existing test methods
+     ***********************************************************/
+
     public void testStagefright_bug_25765591() throws Exception {
         doStagefrightTest(R.raw.bug_25765591);
-    }
-
-    public void testStagefright_bug_25812590() throws Exception {
-        doStagefrightTest(R.raw.bug_25812590);
-    }
-
-    public void testStagefright_bug_26070014() throws Exception {
-        doStagefrightTest(R.raw.bug_26070014);
     }
 
     public void testStagefright_cve_2015_3867() throws Exception {
@@ -178,6 +183,30 @@ public class StagefrightTest extends InstrumentationTestCase {
 
     public void testStagefright_cve_2015_3873_b_21814993() throws Exception {
         doStagefrightTest(R.raw.cve_2015_3873_b_21814993);
+    }
+
+    public void testStagefright_bug_25812590() throws Exception {
+        doStagefrightTest(R.raw.bug_25812590);
+    }
+
+    public void testStagefright_cve_2015_6600() throws Exception {
+        doStagefrightTest(R.raw.cve_2015_6600);
+    }
+
+    public void testStagefright_cve_2015_6603() throws Exception {
+        doStagefrightTest(R.raw.cve_2015_6603);
+    }
+
+    public void testStagefright_cve_2015_6604() throws Exception {
+        doStagefrightTest(R.raw.cve_2015_6604);
+    }
+
+    public void testStagefright_cve_2015_3871() throws Exception {
+        doStagefrightTest(R.raw.cve_2015_3871);
+    }
+
+    public void testStagefright_bug_26070014() throws Exception {
+        doStagefrightTest(R.raw.bug_26070014);
     }
 
     public void testStagefright_bug_32915871() throws Exception {
@@ -525,7 +554,7 @@ public class StagefrightTest extends InstrumentationTestCase {
         MediaMetadataRetriever retriever = new MediaMetadataRetriever();
         try {
             retriever.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
-        } catch (IllegalArgumentException e) {
+        } catch (RuntimeException e) {
             // ignore
         }
         retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
