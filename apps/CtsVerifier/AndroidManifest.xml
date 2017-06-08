@@ -18,7 +18,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.android.cts.verifier"
       android:versionCode="5"
-      android:versionName="6.0_r19">
+      android:versionName="6.0_r20">
 
     <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="23"/>
 
@@ -1267,11 +1267,7 @@
             </intent-filter>
             <meta-data android:name="test_category" android:value="@string/test_category_sensors" />
             <meta-data android:name="test_excluded_features"
-                    android:value="android.hardware.type.television" />
-            <meta-data android:name="test_excluded_features"
-                    android:value="android.software.leanback" />
-            <meta-data android:name="test_excluded_features"
-                    android:value="android.hardware.type.automotive" />
+                    android:value="android.hardware.type.television:android.software.leanback:android.hardware.type.automotive" />
         </activity>
 
         <receiver android:name="com.android.cts.verifier.sensors.DeviceSuspendTestActivity$AlarmReceiver">
