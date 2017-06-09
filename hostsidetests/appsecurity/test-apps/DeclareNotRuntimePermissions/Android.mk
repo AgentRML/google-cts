@@ -1,4 +1,5 @@
-# Copyright (C) 2015 The Android Open Source Project
+#
+# Copyright (C) 2016 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,25 +12,18 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_SRC_FILES := $(call all-java-files-under, ../../common/host-side/tradefed/src)
+LOCAL_MODULE_TAGS := tests
 
-LOCAL_JAVA_RESOURCE_DIRS := res
-LOCAL_JAVA_RESOURCE_DIRS += ../../common/host-side/tradefed/res
+LOCAL_PACKAGE_NAME := CtsDeclareNonRuntimePermissions
 
-LOCAL_SUITE_BUILD_NUMBER := $(BUILD_NUMBER_FROM_FILE)
-LOCAL_SUITE_TARGET_ARCH := $(TARGET_ARCH)
-LOCAL_SUITE_NAME := CTS
-LOCAL_SUITE_FULLNAME := "Compatibility Test Suite"
-LOCAL_SUITE_VERSION := 7.0_r11
+LOCAL_COMPATIBILITY_SUITE := cts
 
-LOCAL_MODULE := cts-tradefed
+LOCAL_DEX_PREOPT := false
 
-include $(BUILD_COMPATIBILITY_SUITE)
-
-# Build all sub-directories
-include $(call all-makefiles-under,$(LOCAL_PATH))
+include $(BUILD_CTS_SUPPORT_PACKAGE)
