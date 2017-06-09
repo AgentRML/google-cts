@@ -1,4 +1,4 @@
-# Copyright (C) 2015 The Android Open Source Project
+# Copyright (C) 2017 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,20 +16,21 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_SRC_FILES := $(call all-java-files-under, ../../common/host-side/tradefed/src)
+LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
-LOCAL_JAVA_RESOURCE_DIRS := res
-LOCAL_JAVA_RESOURCE_DIRS += ../../common/host-side/tradefed/res
+LOCAL_JAVA_RESOURCE_DIRS := assets/
 
-LOCAL_SUITE_BUILD_NUMBER := $(BUILD_NUMBER_FROM_FILE)
-LOCAL_SUITE_TARGET_ARCH := $(TARGET_ARCH)
-LOCAL_SUITE_NAME := CTS
-LOCAL_SUITE_FULLNAME := "Compatibility Test Suite"
-LOCAL_SUITE_VERSION := 7.0_r11
+LOCAL_MODULE_TAGS := tests
 
-LOCAL_MODULE := cts-tradefed
+# tag this module as a cts test artifact
+LOCAL_COMPATIBILITY_SUITE := cts
 
-include $(BUILD_COMPATIBILITY_SUITE)
+LOCAL_MODULE := CtsBackupHostTestCases
 
-# Build all sub-directories
+LOCAL_JAVA_LIBRARIES := cts-tradefed tradefed-prebuilt compatibility-host-util
+
+LOCAL_STATIC_JAVA_LIBRARIES := cts-migration-lib
+
+include $(BUILD_HOST_JAVA_LIBRARY)
+
 include $(call all-makefiles-under,$(LOCAL_PATH))
